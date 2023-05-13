@@ -19,6 +19,15 @@ class SignUp extends StatelessWidget {
               TextFormField(
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
+                  labelText: 'Name',
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              TextFormField(
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
                   labelText: 'Email',
                 ),
               ),
