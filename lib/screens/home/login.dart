@@ -1,9 +1,30 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:lifton/util.dart';
 
-class Login extends StatelessWidget {
+final dio = Dio();
+
+class Login extends StatefulWidget {
   const Login({
     super.key,
   });
+
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  TextEditingController loginEmail = TextEditingController();
+  TextEditingController loginPassword = TextEditingController();
+  void postLogin() async {
+    await dio.post("$server/post-login", data: {
+      "email": loginEmail.text,
+      "password": loginPassword.text
+    }).then((response) {
+      final data = response.data;
+      print(data);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -11,12 +32,13 @@ class Login extends StatelessWidget {
       appBar: AppBar(
         title: const Text("LiftOn"),
       ),
-      body: Form(
+      body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(100),
           child: Column(
             children: [
               TextFormField(
+                controller: loginEmail,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Email',
@@ -26,6 +48,8 @@ class Login extends StatelessWidget {
                 height: 20,
               ),
               TextFormField(
+                controller: loginPassword,
+                obscureText: true,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Password',
@@ -35,7 +59,7 @@ class Login extends StatelessWidget {
                 height: 100,
               ),
               IconButton(
-                onPressed: () {}, // is login successed or not
+                onPressed: postLogin, // is login successed or not
                 icon: const Icon(Icons.check),
                 color: Colors.blue,
               ),

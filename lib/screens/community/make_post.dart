@@ -1,8 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:lifton/screens/nav_bar.dart';
+import 'package:dio/dio.dart';
 
-class PostMaker extends StatelessWidget {
+final dio = Dio();
+
+class PostMaker extends StatefulWidget {
   const PostMaker({super.key});
+
+  @override
+  State<PostMaker> createState() => _PostMakerState();
+}
+
+class _PostMakerState extends State<PostMaker> {
+  TextEditingController postTitle = TextEditingController();
+  TextEditingController postContent = TextEditingController();
+
+  void sendToServer() async {
+    // await dio.post("http://localhost:8080/flutter",
+    //     queryParameters: {"hello": "hello"});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +32,7 @@ class PostMaker extends StatelessWidget {
           child: Column(
             children: [
               TextFormField(
+                controller: postTitle,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Title',
@@ -27,6 +44,7 @@ class PostMaker extends StatelessWidget {
               Expanded(
                 flex: 1,
                 child: TextFormField(
+                  controller: postContent,
                   maxLines: null,
                   expands: true,
                   decoration: const InputDecoration(
@@ -44,7 +62,7 @@ class PostMaker extends StatelessWidget {
                   ),
                   const Spacer(),
                   IconButton(
-                    onPressed: () {}, // is login successed or not
+                    onPressed: sendToServer, // is login successed or not
                     icon: const Icon(Icons.check),
                     color: Colors.blue,
                   ),

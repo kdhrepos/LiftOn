@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lifton/screens/home/home_screen.dart';
+import 'package:lifton/screens/home/start.dart';
 
 void main() {
   runApp(const App());
