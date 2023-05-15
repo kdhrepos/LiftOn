@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:dio/dio.dart';
-import 'package:lifton/util.dart';
-
-final dio = Dio();
+import 'package:lifton/models/user.dart';
+import 'package:lifton/global/state.dart';
+import 'package:lifton/global/util.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({
@@ -28,6 +27,9 @@ class _SignUpState extends State<SignUp> {
       });
       return;
     }
+    setState(() {
+      isPasswordSame = true;
+    });
 
     await dio.post("$server/post-sign-up", data: {
       "name": signUpName.text,
@@ -35,10 +37,13 @@ class _SignUpState extends State<SignUp> {
       "password": signUpPassword.text
     }).then((response) {
       final data = response.data;
-      print(data);
-    });
-    setState(() {
-      isPasswordSame = true;
+
+      if (data['success'] == true) {
+        currentUser = UserModel.fromDB(data['userData']);
+        isLoggedIn = true;
+        // currentUser.showInfo();
+        // Navigator push
+      }
     });
   }
 

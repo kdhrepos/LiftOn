@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lifton/screens/community/make_post.dart';
+import 'package:lifton/screens/community/posts.dart';
 import 'package:lifton/screens/home/login.dart';
 import 'package:lifton/screens/home/sign_up.dart';
 
@@ -36,7 +36,7 @@ class HomeScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => SignUp()),
+                    MaterialPageRoute(builder: (context) => const SignUp()),
                   );
                 },
                 icon: const Icon(Icons.account_box),
@@ -46,7 +46,7 @@ class HomeScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const PostMaker()),
+                    MaterialPageRoute(builder: (context) => const Posts()),
                   );
                 },
                 icon: const Icon(Icons.no_accounts),

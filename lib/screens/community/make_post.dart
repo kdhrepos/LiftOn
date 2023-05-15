@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:lifton/global/state.dart';
+import 'package:lifton/global/util.dart';
 import 'package:lifton/screens/nav_bar.dart';
-import 'package:dio/dio.dart';
-
-final dio = Dio();
 
 class PostMaker extends StatefulWidget {
   const PostMaker({super.key});
@@ -15,9 +14,15 @@ class _PostMakerState extends State<PostMaker> {
   TextEditingController postTitle = TextEditingController();
   TextEditingController postContent = TextEditingController();
 
-  void sendToServer() async {
-    // await dio.post("http://localhost:8080/flutter",
-    //     queryParameters: {"hello": "hello"});
+  void postPost() async {
+    await dio.post("$server/post-process", data: {
+      "title": postTitle.text,
+      "content": postContent.text,
+      "author": currentUser.name,
+      "userId": currentUser.id,
+    }).then((response) {
+      print(response);
+    });
   }
 
   @override
@@ -62,7 +67,7 @@ class _PostMakerState extends State<PostMaker> {
                   ),
                   const Spacer(),
                   IconButton(
-                    onPressed: sendToServer, // is login successed or not
+                    onPressed: postPost, // is login successed or not
                     icon: const Icon(Icons.check),
                     color: Colors.blue,
                   ),

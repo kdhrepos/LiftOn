@@ -1,8 +1,7 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:lifton/util.dart';
-
-final dio = Dio();
+import 'package:lifton/models/user.dart';
+import 'package:lifton/global/state.dart';
+import 'package:lifton/global/util.dart';
 
 class Login extends StatefulWidget {
   const Login({
@@ -16,13 +15,21 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   TextEditingController loginEmail = TextEditingController();
   TextEditingController loginPassword = TextEditingController();
+
   void postLogin() async {
     await dio.post("$server/post-login", data: {
       "email": loginEmail.text,
       "password": loginPassword.text
     }).then((response) {
       final data = response.data;
-      print(data);
+
+      if (data['success'] == true) {
+        print("Login Success");
+        currentUser = UserModel.fromDB(data['userData']);
+        isLoggedIn = true;
+        // currentUser.showInfo();
+        // Navigator push
+      }
     });
   }
 

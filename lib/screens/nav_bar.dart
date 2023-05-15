@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lifton/screens/community/posts.dart';
 import 'package:lifton/screens/exercise/exercise_home.dart';
 
 class NavBar extends StatelessWidget {
@@ -27,7 +28,12 @@ class NavBar extends StatelessWidget {
           ),
           IconButton(
             icon: const Icon(Icons.messenger),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const Posts()),
+              );
+            },
             color: Colors.blue,
           ),
           IconButton(
