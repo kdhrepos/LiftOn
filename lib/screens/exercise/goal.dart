@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lifton/screens/exercise/make_goal.dart';
-import 'package:lifton/screens/nav_bar.dart';
 
 class Goal extends StatelessWidget {
   const Goal({super.key});
@@ -8,7 +7,6 @@ class Goal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
       body: Center(
         child: Column(
           children: [
@@ -25,7 +23,6 @@ class Goal extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: const NavBar(),
     );
   }
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lifton/screens/nav_bar.dart';
 
 class GoalMaker extends StatelessWidget {
   const GoalMaker({super.key});
@@ -7,10 +6,6 @@ class GoalMaker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          title: const Text(
-        "Lift On",
-      )),
       body: Form(
         child: Padding(
           padding: const EdgeInsets.all(16),
@@ -65,7 +60,6 @@ class GoalMaker extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: const NavBar(),
     );
   }
 }

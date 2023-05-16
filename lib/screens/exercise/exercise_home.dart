@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lifton/screens/exercise/goal.dart';
-import 'package:lifton/screens/nav_bar.dart';
 
 class ExerciseHome extends StatelessWidget {
   const ExerciseHome({super.key});
@@ -28,7 +27,6 @@ class ExerciseHome extends StatelessWidget {
           ),
         ],
       )),
-      bottomNavigationBar: const NavBar(),
     );
   }
 }

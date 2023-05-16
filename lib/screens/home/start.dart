@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:lifton/screens/community/posts.dart';
 import 'package:lifton/screens/home/login.dart';
+import 'package:lifton/screens/home/main.dart';
 import 'package:lifton/screens/home/sign_up.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class StartScreen extends StatelessWidget {
+  const StartScreen({super.key});
 
-  // This widget is the root of your application.
   @override
   Scaffold build(BuildContext context) {
     return Scaffold(
@@ -46,7 +45,7 @@ class HomeScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const Posts()),
+                    MaterialPageRoute(builder: (context) => const Main()),
                   );
                 },
                 icon: const Icon(Icons.no_accounts),

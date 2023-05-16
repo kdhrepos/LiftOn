@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lifton/models/post.dart';
 import 'package:lifton/screens/community/fetcher.dart';
-import 'package:lifton/screens/nav_bar.dart';
 import 'package:lifton/widgets/community/post_preview.dart';
 
 class Posts extends StatefulWidget {
@@ -25,9 +24,6 @@ class _PostsState extends State<Posts> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("LiftOn"),
-      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(50),
@@ -51,7 +47,6 @@ class _PostsState extends State<Posts> {
           ]),
         ),
       ),
-      bottomNavigationBar: const NavBar(),
     );
   }
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lifton/models/post.dart';
-import 'package:lifton/screens/nav_bar.dart';
 
 class Post extends StatelessWidget {
   final PostModel post;
@@ -13,15 +12,9 @@ class Post extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          "LiftOn",
-        ),
-      ),
-      body: Column(
-        children: [Text(post.title), Text(post.content)],
-      ),
-      bottomNavigationBar: const NavBar(),
-    );
+        appBar: AppBar(),
+        body: Column(
+          children: [Text(post.title), Text(post.content)],
+        ));
   }
 }

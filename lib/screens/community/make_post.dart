@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lifton/global/state.dart';
 import 'package:lifton/global/util.dart';
-import 'package:lifton/screens/nav_bar.dart';
+import 'package:lifton/screens/layouts/nav_bar.dart';
 
 class PostMaker extends StatefulWidget {
   const PostMaker({super.key});
@@ -28,9 +28,6 @@ class _PostMakerState extends State<PostMaker> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Write Page'),
-      ),
       body: Form(
         child: Padding(
           padding: const EdgeInsets.all(16),

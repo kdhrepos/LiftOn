@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lifton/models/user.dart';
 import 'package:lifton/global/state.dart';
 import 'package:lifton/global/util.dart';
+import 'package:lifton/screens/home/home.dart';
 
 class Login extends StatefulWidget {
   const Login({
@@ -29,6 +30,10 @@ class _LoginState extends State<Login> {
         isLoggedIn = true;
         // currentUser.showInfo();
         // Navigator push
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const Home()),
+        );
       }
     });
   }
