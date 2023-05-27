@@ -1,0 +1,34 @@
+{
+  "name": "CRUD",
+  "version": "1.0.0",
+  "description": "CRUD Platform",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {},
+  "author": "Kim",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.1",
+    "concurrently": "^7.6.0",
+    "connect-flash": "^0.1.1",
+    "cors": "^2.8.5",
+    "csurf": "^1.11.0",
+    "express": "^4.18.2",
+    "express-mysql-session": "^2.1.8",
+    "express-mysql2-session": "^1.0.1",
+    "express-session": "^1.17.3",
+    "express-validator": "^6.15.0",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.1.2",
+    "nodemailer": "^6.9.1",
+    "nodemailer-sendgrid-transport": "^0.2.0",
+    "nodemon": "^2.0.20",
+    "pug": "^3.0.2",
+    "sequelize": "^6.28.0",
+    "socket.io": "^4.6.0"
+  }
+}
