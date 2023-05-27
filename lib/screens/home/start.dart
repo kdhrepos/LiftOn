@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lifton/screens/home/login.dart';
-import 'package:lifton/screens/home/main.dart';
 import 'package:lifton/screens/home/sign_up.dart';
 
 class StartScreen extends StatelessWidget {
@@ -43,10 +42,7 @@ class StartScreen extends StatelessWidget {
               ),
               IconButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const Main()),
-                  );
+                  Navigator.pop(context);
                 },
                 icon: const Icon(Icons.no_accounts),
                 color: Colors.blue,

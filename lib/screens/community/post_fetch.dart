@@ -1,7 +1,7 @@
 import 'package:lifton/global/util.dart';
 import 'package:lifton/models/post.dart';
 
-class Fetcher {
+class PostFetch {
   static Future<List<PostModel>> getAllPosts() async {
     try {
       final response = await dio.get("$server/posts");
@@ -11,7 +11,6 @@ class Fetcher {
 
         for (int i = 0; i < response.data.length; i++) {
           PostModel post = PostModel.fromDB(response.data[i]);
-          post.showInfo();
           postList.add(post);
         }
 

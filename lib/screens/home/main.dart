@@ -5,7 +5,9 @@ import 'package:lifton/screens/home/home.dart';
 import 'package:lifton/screens/settings/setting_screen.dart';
 
 class Main extends StatefulWidget {
-  const Main({super.key});
+  const Main({
+    super.key,
+  });
 
   @override
   State<Main> createState() => _MainState();
@@ -13,6 +15,11 @@ class Main extends StatefulWidget {
 
 class _MainState extends State<Main> {
   int selectedIdx = 0;
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   static const List<Widget> screens = <Widget>[
     Home(),

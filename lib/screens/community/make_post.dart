@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lifton/global/state.dart';
 import 'package:lifton/global/util.dart';
-import 'package:lifton/screens/layouts/nav_bar.dart';
 
 class PostMaker extends StatefulWidget {
   const PostMaker({super.key});
@@ -22,12 +21,16 @@ class _PostMakerState extends State<PostMaker> {
       "userId": currentUser.id,
     }).then((response) {
       print(response);
+      Navigator.pop(context);
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+      ),
       body: Form(
         child: Padding(
           padding: const EdgeInsets.all(16),
@@ -74,7 +77,6 @@ class _PostMakerState extends State<PostMaker> {
           ),
         ),
       ),
-      bottomNavigationBar: const NavBar(),
     );
   }
 }

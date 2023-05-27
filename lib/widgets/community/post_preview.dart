@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lifton/models/post.dart';
 import 'package:lifton/screens/community/post.dart';
+import 'package:intl/intl.dart';
 
 class PostPreview extends StatelessWidget {
   const PostPreview({
@@ -27,9 +28,11 @@ class PostPreview extends StatelessWidget {
               );
             },
             child: Text(
-              post.title,
+              post.title.length > 10
+                  ? "${post.title.substring(0, 10)}..."
+                  : post.title,
               style: const TextStyle(
-                color: Colors.blue,
+                color: Colors.blueGrey,
               ),
             ),
           ),
@@ -37,16 +40,18 @@ class PostPreview extends StatelessWidget {
           Text(
             post.author,
             style: const TextStyle(
-              color: Colors.blue,
+              color: Colors.blueGrey,
             ),
           ),
           const SizedBox(
             width: 5,
           ),
           Text(
-            post.createdAt,
+            DateFormat('yyyy-MM-dd HH:mm').format(
+              DateTime.parse(post.createdAt),
+            ),
             style: const TextStyle(
-              color: Colors.blue,
+              color: Colors.blueGrey,
             ),
           ),
           const SizedBox(

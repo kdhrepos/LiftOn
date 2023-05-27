@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:lifton/global/state.dart';
 import 'package:lifton/models/post.dart';
-import 'package:lifton/screens/community/fetcher.dart';
+import 'package:lifton/screens/community/post_fetch.dart';
+import 'package:lifton/screens/community/make_post.dart';
+import 'package:lifton/screens/home/login.dart';
 import 'package:lifton/widgets/community/post_preview.dart';
 
 class Posts extends StatefulWidget {
@@ -18,7 +21,7 @@ class _PostsState extends State<Posts> {
   @override
   void initState() {
     super.initState();
-    postList = Fetcher.getAllPosts();
+    postList = PostFetch.getAllPosts();
   }
 
   @override
@@ -41,11 +44,28 @@ class _PostsState extends State<Posts> {
                     ],
                   );
                 }
-                return const Text("...");
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
               }),
             ),
           ]),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          isLoggedIn
+              ? Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const PostMaker()),
+                )
+              : Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Login()),
+                );
+        },
+        tooltip: "Write Post",
+        child: const Icon(Icons.add),
       ),
     );
   }
