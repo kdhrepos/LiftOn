@@ -1,8 +1,9 @@
+
 import 'package:flutter/material.dart';
 import 'package:lifton/models/plan.dart';
 
-class Plan extends StatefulWidget {
-  Plan({
+class ExerciseCard extends StatefulWidget {
+  ExerciseCard({
     Key? key,
     required this.onDelete,
     required this.index,
@@ -18,10 +19,10 @@ class Plan extends StatefulWidget {
   late PlanModel plan;
 
   @override
-  State<Plan> createState() => _ExerciseCardState();
+  State<ExerciseCard> createState() => _ExerciseCardState();
 }
 
-class _ExerciseCardState extends State<Plan> {
+class _ExerciseCardState extends State<ExerciseCard> {
   TextEditingController nameController = TextEditingController();
   TextEditingController setController = TextEditingController();
   TextEditingController repsController = TextEditingController();

@@ -1,5 +1,10 @@
 class GoalModel {
-  final String id, weight, bmi, fatMass, muscleMass, filePath;
+  final String? filePath;
+  final int id;
+  final dynamic weight, bmi, fatMass, muscleMass;
+  void showInfo() {
+    print("$id $weight $fatMass");
+  }
 
   GoalModel.fromDB(Map<String, dynamic> db)
       : id = db['id'],

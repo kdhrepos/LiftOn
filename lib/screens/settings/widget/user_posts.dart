@@ -1,27 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:lifton/global/state.dart';
-import 'package:lifton/models/post.dart';
 import 'package:lifton/fetch/post_fetch.dart';
-import 'package:lifton/screens/community/make_post.dart';
-import 'package:lifton/screens/home/start.dart';
+import 'package:lifton/models/post.dart';
 import 'package:lifton/screens/community/widgets/post_preview.dart';
 
-class Posts extends StatefulWidget {
-  const Posts({
-    super.key,
-  });
+class UserPosts extends StatefulWidget {
+  const UserPosts({super.key});
 
   @override
-  State<Posts> createState() => _PostsState();
+  State<UserPosts> createState() => _UserPostsState();
 }
 
-class _PostsState extends State<Posts> {
+class _UserPostsState extends State<UserPosts> {
   late Future<List<PostModel>> postList;
 
   @override
   void initState() {
     super.initState();
-    postList = PostFetch.getAllPosts();
+    postList = PostFetch.getUserPosts();
   }
 
   @override
@@ -37,6 +32,16 @@ class _PostsState extends State<Posts> {
                 if (snapshot.hasData) {
                   return Column(
                     children: [
+                      Text(
+                        "${snapshot.data!.length.toString()} Posts",
+                        style: const TextStyle(
+                          fontSize: 30,
+                          color: Colors.blue,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
                       for (PostModel post in snapshot.data!)
                         PostPreview(
                           post: post,
@@ -51,25 +56,6 @@ class _PostsState extends State<Posts> {
             ),
           ]),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          isLoggedIn
-              ? Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const MakePost()),
-                )
-              : showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return const Dialog(
-                      child: StartScreen(),
-                    );
-                  },
-                );
-        },
-        tooltip: "Write Post",
-        child: const Icon(Icons.add),
       ),
     );
   }

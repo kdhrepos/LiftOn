@@ -4,9 +4,10 @@ import 'package:lifton/global/state.dart';
 import 'package:lifton/global/util.dart';
 import 'package:lifton/models/comment.dart';
 import 'package:lifton/models/post.dart';
-import 'package:lifton/screens/community/comment_fetch.dart';
+import 'package:lifton/fetch/comment_fetch.dart';
 import 'package:lifton/screens/home/login.dart';
-import 'package:lifton/widgets/community/comment.dart';
+import 'package:lifton/screens/community/widgets/comment.dart';
+import 'package:lifton/screens/home/main.dart';
 
 class Post extends StatefulWidget {
   final PostModel post;
@@ -29,6 +30,7 @@ class _PostState extends State<Post> {
   void initState() {
     super.initState();
     commentList = CommentFetch.getAllComments(widget.post.id);
+    print(widget.post.filePath);
   }
 
   void postComment() async {
@@ -64,6 +66,49 @@ class _PostState extends State<Post> {
     }
   }
 
+  void deletePost() async {
+    final response = await dio.post("$server/delete-post", data: {
+      "id": widget.post.id,
+      "userId": currentUser.id,
+    });
+    print(response.data['message']);
+
+    if (response.data['success'] == true) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => Main(
+            selectedIdx: 2,
+          ),
+        ),
+      );
+    } else {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(
+              response.data["message"],
+            ),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: const Text(
+                  'Ok',
+                  style: TextStyle(
+                    color: Colors.blue,
+                  ),
+                ),
+              ),
+            ],
+          );
+        },
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -89,15 +134,18 @@ class _PostState extends State<Post> {
                       height: 10,
                     ),
                     Text(
-                      "${widget.post.author} ${DateFormat('yyyy-MM-dd HH:mm').format(
-                        DateTime.parse(widget.post.createdAt),
-                      )}",
+                      "${widget.post.author} ${DateFormat('yyyy-MM-dd HH:mm').format(DateTime.parse(widget.post.createdAt))}",
                       style:
                           const TextStyle(fontSize: 12, color: Colors.blueGrey),
                     ),
                   ],
                 ),
                 const Divider(),
+                widget.post.filePath == null ||
+                        widget.post.filePath == "undefined"
+                    ? const Text("")
+                    : Image.network(
+                        '$server/get-image/?filePath=${widget.post.filePath}'),
                 Text(
                   widget.post.content,
                   style: const TextStyle(
@@ -164,10 +212,46 @@ class _PostState extends State<Post> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: const Icon(Icons.delete),
-      ),
+      floatingActionButton: isLoggedIn
+          ? FloatingActionButton(
+              heroTag: 'deleteButton',
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      title: const Text(
+                        "Delete Post",
+                      ),
+                      content: const Text("Sure?"),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            deletePost();
+                            Navigator.of(context).pop();
+                          },
+                          child: const Text(
+                            'Delete',
+                            style: TextStyle(
+                              color: Colors.red,
+                            ),
+                          ),
+                        ),
+                        TextButton(
+                          child: const Text('Cancel'),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                      ],
+                    );
+                  },
+                );
+              },
+              tooltip: "delete",
+              child: const Icon(Icons.delete),
+            )
+          : null,
     );
   }
 }

@@ -11,7 +11,7 @@ class PostModel {
         title = db['title'],
         content = db['content'],
         author = db['author'],
-        filePath = db['filePath'],
+        filePath = db['file_path'],
         userId = db['userId'],
         createdAt = db['createdAt'].toString();
 }

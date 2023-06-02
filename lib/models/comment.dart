@@ -2,7 +2,7 @@ class CommentModel {
   final String content, author, createdAt;
   final int id, userId, postId;
   void showInfo() {
-    print("$id, $content, , $author,  $userId, $createdAt");
+    print("$id, $content, , $author,  $userId, $createdAt \n");
   }
 
   CommentModel.fromDB(Map<String, dynamic> db)

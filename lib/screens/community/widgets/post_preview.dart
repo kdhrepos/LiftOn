@@ -29,8 +29,8 @@ class PostPreview extends StatelessWidget {
             },
             child: Text(
               post.title.length > 10
-                  ? "${post.title.substring(0, 10)}..."
-                  : post.title,
+                  ? " ${post.title.substring(0, 10)}..."
+                  : " ${post.title}",
               style: const TextStyle(
                 color: Colors.blueGrey,
               ),
