@@ -3,8 +3,8 @@ import 'package:lifton/fetch/comment_fetch.dart';
 import 'package:lifton/global/state.dart';
 import 'package:lifton/models/comment.dart';
 import 'package:lifton/models/post.dart';
-import 'package:lifton/screens/community/widgets/comment.dart';
-import 'package:lifton/screens/community/widgets/post_preview.dart';
+import 'package:lifton/screens/community/comment.dart';
+import 'package:lifton/screens/community/post_preview.dart';
 
 class UserComments extends StatefulWidget {
   const UserComments({super.key});

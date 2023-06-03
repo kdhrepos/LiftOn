@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lifton/fetch/post_fetch.dart';
 import 'package:lifton/models/post.dart';
-import 'package:lifton/screens/community/widgets/post_preview.dart';
+import 'package:lifton/screens/community/post_preview.dart';
 
 class UserPosts extends StatefulWidget {
   const UserPosts({super.key});

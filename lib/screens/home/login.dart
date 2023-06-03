@@ -28,7 +28,6 @@ class _LoginState extends State<Login> {
       if (data['success'] == true) {
         print("Login Success");
         currentUser = UserModel.fromDB(data['userData']);
-        currentUser.showInfo();
         isLoggedIn = true;
         isLoginFailed = false;
         Navigator.pushReplacement(

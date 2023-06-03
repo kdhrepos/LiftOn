@@ -1,17 +1,17 @@
 class PlanModel {
   int id, userId;
-  DateTime date;
+  String date;
   String name;
-  int set;
-  int reps;
-  double weight;
+  dynamic set, reps, weight;
+  bool isConducted;
 
   PlanModel.fromDB(Map<String, dynamic> db)
       : id = db['id'],
         userId = db['userId'],
-        date = DateTime.parse(db['createdAt']),
+        date = db['createdAt'].toString(),
         name = db['name'],
         set = db['set'],
         reps = db['reps'],
-        weight = db['weight'];
+        weight = db['weight'],
+        isConducted = db['isConducted'];
 }

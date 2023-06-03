@@ -23,3 +23,12 @@ bool checkPasswordLength(String password) {
   if (password.length < 5) return false;
   return true;
 }
+
+bool isFieldsEmpty(List<String> fields) {
+  for (String s in fields) {
+    if (s.isEmpty) {
+      return true;
+    }
+  }
+  return false;
+}

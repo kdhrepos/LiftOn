@@ -11,7 +11,7 @@ class Main extends StatefulWidget {
     super.key,
     required this.selectedIdx,
   });
-  int selectedIdx = 0;
+  int selectedIdx;
 
   @override
   State<Main> createState() => _MainState();
@@ -21,6 +21,15 @@ class _MainState extends State<Main> {
   @override
   void initState() {
     super.initState();
+    if (widget.selectedIdx == 1) {
+      screens[widget.selectedIdx] =
+          isLoggedIn ? const Exercise() : const StartScreen();
+    }
+    if (widget.selectedIdx == 3) {
+      screens[widget.selectedIdx] =
+          isLoggedIn ? const Setting() : const StartScreen();
+    }
+    widget.selectedIdx = widget.selectedIdx;
   }
 
   List<Widget> screens = <Widget>[

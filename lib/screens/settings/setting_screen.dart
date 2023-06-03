@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:lifton/screens/settings/widget/change_password.dart';
-import 'package:lifton/screens/settings/widget/leave.dart';
-import 'package:lifton/screens/settings/widget/profile.dart';
-import 'package:lifton/screens/settings/widget/user_comments.dart';
-import 'package:lifton/screens/settings/widget/user_posts.dart';
+import 'package:lifton/screens/settings/change_password.dart';
+import 'package:lifton/screens/settings/leave.dart';
+import 'package:lifton/screens/settings/profile.dart';
+import 'package:lifton/screens/settings/user_comments.dart';
+import 'package:lifton/screens/settings/user_posts.dart';
 
 class Setting extends StatelessWidget {
   const Setting({

@@ -4,54 +4,35 @@ import 'package:lifton/models/plan.dart';
 class Plan extends StatefulWidget {
   Plan({
     Key? key,
-    required this.onDelete,
-    required this.index,
-    required this.setData,
-    required this.postPlan,
+    required this.plan,
   }) : super(key: key);
 
-  int index;
-  final Function(int) onDelete;
-  final Function(PlanModel plan, int index) setData;
-  final Function(PlanModel plan) postPlan;
-
-  late PlanModel plan;
+  PlanModel plan;
 
   @override
-  State<Plan> createState() => _ExerciseCardState();
+  State<Plan> createState() => _PlanState();
 }
 
-class _ExerciseCardState extends State<Plan> {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController setController = TextEditingController();
-  TextEditingController repsController = TextEditingController();
-  TextEditingController weightController = TextEditingController();
-
+class _PlanState extends State<Plan> {
   @override
   void initState() {
     super.initState();
-    // Set the initial values of the controllers based on the workout data
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: widget.plan.isConducted ? Colors.grey.shade200 : Colors.white,
+        borderRadius: BorderRadius.circular(10.0),
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.3),
             spreadRadius: 2,
             blurRadius: 5,
-            offset: const Offset(0, 3), // changes the shadow position
+            offset: const Offset(0, 3),
           ),
         ],
-        borderRadius: BorderRadius.circular(
-            10), // adjusts the border radius of the container
-        border: Border.all(
-          color: Colors.grey.withOpacity(0.5),
-          width: 1,
-        ),
       ),
       child: Column(
         children: [
@@ -61,78 +42,41 @@ class _ExerciseCardState extends State<Plan> {
               children: [
                 Row(
                   children: [
-                    Expanded(
-                      child: TextFormField(
-                        onChanged: (value) {
-                          setState(() {});
-                        },
-                        controller: nameController,
-                        decoration: const InputDecoration(
-                          labelText: 'Name',
-                        ),
-                      ),
-                    ),
                     IconButton(
+                      splashRadius: 1.0,
                       onPressed: () {
-                        widget.onDelete(widget.index);
+                        setState(() {
+                          widget.plan.isConducted
+                              ? widget.plan.isConducted = false
+                              : widget.plan.isConducted = true;
+                        });
                       },
-                      icon: const Icon(Icons.delete),
+                      icon: widget.plan.isConducted
+                          ? const Icon(Icons.check_box)
+                          : const Icon(Icons.check_box_outline_blank),
                       color: Colors.blue,
                     ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.save),
-                      color: Colors.blue,
+                    const SizedBox(width: 8),
+                    Text(
+                      widget.plan.name,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
                     ),
                   ],
                 ),
-                Row(
-                  children: [
-                    Expanded(
-                      child: TextFormField(
-                        onChanged: (value) {
-                          setState(() {
-                            widget.plan.set = int.parse(value);
-                            widget.setData(widget.plan, widget.index);
-                          });
-                        },
-                        controller: setController,
-                        decoration: const InputDecoration(
-                          labelText: 'Set',
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 8.0),
-                    Expanded(
-                      child: TextFormField(
-                        onChanged: (value) {
-                          setState(() {
-                            widget.plan.weight = double.parse(value);
-                            widget.setData(widget.plan, widget.index);
-                          });
-                        },
-                        controller: weightController,
-                        decoration: const InputDecoration(
-                          labelText: 'Weight (kg)',
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 8.0),
-                    Expanded(
-                      child: TextFormField(
-                        onChanged: (value) {
-                          setState(() {
-                            widget.plan.reps = int.parse(value);
-                            widget.setData(widget.plan, widget.index);
-                          });
-                        },
-                        controller: repsController,
-                        decoration: const InputDecoration(
-                          labelText: 'Reps',
-                        ),
-                      ),
-                    ),
-                  ],
+                ListTile(
+                  leading: const Icon(Icons.format_list_numbered),
+                  title: Text('Sets: ${widget.plan.set}'),
+                ),
+                ListTile(
+                  leading: const Icon(Icons.repeat_sharp),
+                  title: Text('Reps: ${widget.plan.reps}'),
+                ),
+                ListTile(
+                  leading: const Icon(Icons.fitness_center),
+                  title: Text('Weight: ${widget.plan.weight}'),
                 ),
               ],
             ),

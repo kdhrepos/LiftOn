@@ -24,9 +24,6 @@ class _GoalState extends State<Goal> {
       final goal = await GoalFetch.getUserGoal(currentUser.id);
       setState(() {
         userGoal = goal;
-        if (goal != null) {
-          goal.showInfo();
-        }
       });
     } catch (error) {
       print('Failed to fetch user goal: $error');
@@ -49,6 +46,7 @@ class _GoalState extends State<Goal> {
         width: double.infinity,
         decoration: BoxDecoration(
           color: Colors.white,
+          borderRadius: BorderRadius.circular(10.0),
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.3),
@@ -57,11 +55,6 @@ class _GoalState extends State<Goal> {
               offset: const Offset(0, 3),
             ),
           ],
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(
-            color: Colors.grey.withOpacity(0.5),
-            width: 1,
-          ),
         ),
         child: Padding(
           padding: const EdgeInsets.all(8.0),

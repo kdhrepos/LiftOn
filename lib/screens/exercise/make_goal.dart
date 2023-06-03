@@ -55,7 +55,13 @@ class _MakeGoalState extends State<MakeGoal> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text("Goal"),
+        title: const Text("Set Your Goal"),
+        leading: IconButton(
+          icon: const Icon(Icons.close),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
       body: Form(
         child: Padding(

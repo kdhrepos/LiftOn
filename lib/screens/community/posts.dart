@@ -4,7 +4,7 @@ import 'package:lifton/models/post.dart';
 import 'package:lifton/fetch/post_fetch.dart';
 import 'package:lifton/screens/community/make_post.dart';
 import 'package:lifton/screens/home/start.dart';
-import 'package:lifton/screens/community/widgets/post_preview.dart';
+import 'package:lifton/screens/community/post_preview.dart';
 
 class Posts extends StatefulWidget {
   const Posts({

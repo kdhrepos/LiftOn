@@ -6,7 +6,7 @@ import 'package:lifton/models/comment.dart';
 import 'package:lifton/models/post.dart';
 import 'package:lifton/fetch/comment_fetch.dart';
 import 'package:lifton/screens/home/login.dart';
-import 'package:lifton/screens/community/widgets/comment.dart';
+import 'package:lifton/screens/community/comment.dart';
 import 'package:lifton/screens/home/main.dart';
 
 class Post extends StatefulWidget {
@@ -145,7 +145,19 @@ class _PostState extends State<Post> {
                         widget.post.filePath == "undefined"
                     ? const Text("")
                     : Image.network(
-                        '$server/get-image/?filePath=${widget.post.filePath}'),
+                        '$server/get-image/?filePath=${widget.post.filePath}',
+                        errorBuilder: (BuildContext context, Object exception,
+                            StackTrace? stackTrace) {
+                          return const Text(
+                            "File Not Found",
+                            style: TextStyle(
+                              fontSize: 50,
+                              backgroundColor: Colors.red,
+                              color: Colors.white,
+                            ),
+                          );
+                        },
+                      ),
                 Text(
                   widget.post.content,
                   style: const TextStyle(

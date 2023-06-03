@@ -41,17 +41,9 @@ class Profile extends StatelessWidget {
                     width: 5,
                   ),
                   currentUser.gender == 1
-                      ? const Icon(
-                          Icons.male,
-                          color: Colors.blue,
-                        )
-                      : Icon(
-                          Icons.female,
-                          color: Colors.pink[200],
-                        ),
-                  const SizedBox(
-                    width: 5,
-                  ),
+                      ? const Icon(Icons.male, color: Colors.blue)
+                      : const Icon(Icons.female),
+                  const SizedBox(width: 5),
                   currentUser.isTrainer == 0
                       ? const Icon(Icons.person, color: Colors.blue)
                       : const Icon(Icons.fitness_center, color: Colors.blue),
