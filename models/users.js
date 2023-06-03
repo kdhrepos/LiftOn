@@ -21,9 +21,16 @@ const User = sequelize.define("user", {
     type: Sequelize.STRING,
     allowNull: false,
   },
-  // userType: {
-  //   type: Sequelize.BOOLEAN,
-  //   allowNULL: false,
-  // },
+  userType: {
+    type: Sequelize.INTEGER,
+    allowNULL: false,
+  },
+  gender: {
+    type: Sequelize.INTEGER,
+  },
+  weight: { type: Sequelize.DOUBLE },
+  bmi: { type: Sequelize.DOUBLE },
+  fatMass: { type: Sequelize.DOUBLE },
+  muscleMass: { type: Sequelize.DOUBLE },
 });
 module.exports = User;

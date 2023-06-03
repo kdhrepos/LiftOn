@@ -1,17 +1,10 @@
 const express = require("express");
-
 const router = express.Router();
-
 const commentController = require("../controllers/comment");
-const isAuthed = require("../middleware/isAuthed");
 
-router.use("/get-comment-process", commentController.getCommentProcess);
-router.use("/post-comment-process", commentController.postCommentProcess);
-
-router.use(
-  "/delete-comment-process/postId=:postId&commentId=:commentId",
-  isAuthed,
-  commentController.deleteCommentProcess
-);
+router.use("/get-comment-process", commentController.getPostComments);
+router.use("/post-comment-process", commentController.postComment);
+router.use("/get-user-comment", commentController.getUserComments);
+router.use("/delete-comment", commentController.deleteComment);
 
 module.exports = router;

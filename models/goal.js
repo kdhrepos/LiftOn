@@ -9,7 +9,10 @@ const Goal = sequelize.define("goal", {
     allowNull: false,
     primaryKey: true,
   },
-  data: { type: Sequelize.JSON },
+  weight: { type: Sequelize.DOUBLE },
+  bmi: { type: Sequelize.DOUBLE },
+  fatMass: { type: Sequelize.DOUBLE },
+  muscleMass: { type: Sequelize.DOUBLE },
   userId: { type: Sequelize.INTEGER, allowNull: false },
 });
 module.exports = Goal;

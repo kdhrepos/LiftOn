@@ -9,7 +9,11 @@ const Plan = sequelize.define("plan", {
     allowNull: false,
     primaryKey: true,
   },
-  data: { type: Sequelize.JSON },
   userId: { type: Sequelize.INTEGER, allowNull: false },
+  name: { type: Sequelize.STRING },
+  set: { type: Sequelize.INTEGER },
+  reps: { type: Sequelize.INTEGER },
+  weight: { type: Sequelize.DOUBLE },
+  isConducted: { type: Sequelize.BOOLEAN },
 });
 module.exports = Plan;
