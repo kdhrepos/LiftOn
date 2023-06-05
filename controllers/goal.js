@@ -13,7 +13,6 @@ exports.getUserGoal = async (req, res, next) => {
     return res.json(goal.dataValues);
   }
 };
-
 exports.postGoal = async (req, res, next) => {
   const userId = req.body.userId;
   const weight = req.body.weight;

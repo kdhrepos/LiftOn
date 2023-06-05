@@ -1,10 +1,8 @@
 const express = require("express");
 const app = express();
 
-const bcrypt = require("bcryptjs");
 const bodyParser = require("body-parser");
 const sequelize = require("./util/database");
-const path = require("path");
 const multer = require("multer");
 
 const port = 8080;

@@ -31,6 +31,7 @@ exports.postPlan = async (req, res, next) => {
     reps: req.body.reps,
     weight: req.body.weight,
     isConducted: req.body.isConducted,
+    createdAt: req.body.date,
   })
     .then(() => {
       return res.status(200).json({ success: true });
