@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lifton/fetch/post_fetch.dart';
+import 'package:lifton/global/fetch.dart';
 import 'package:lifton/models/post.dart';
 import 'package:lifton/screens/community/post_preview.dart';
 
@@ -16,7 +16,7 @@ class _UserPostsState extends State<UserPosts> {
   @override
   void initState() {
     super.initState();
-    postList = PostFetch.getUserPosts();
+    postList = Fetcher.getUserPosts();
   }
 
   @override

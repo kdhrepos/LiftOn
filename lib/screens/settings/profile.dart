@@ -2,11 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:lifton/global/state.dart';
 
 class Profile extends StatelessWidget {
-  final String? profileImageUrl;
-
   const Profile({
     super.key,
-    this.profileImageUrl,
   });
 
   @override

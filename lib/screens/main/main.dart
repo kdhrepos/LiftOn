@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:lifton/global/state.dart';
 import 'package:lifton/screens/community/posts.dart';
 import 'package:lifton/screens/exercise/exercise.dart';
-import 'package:lifton/screens/home/home.dart';
-import 'package:lifton/screens/home/start.dart';
+import 'package:lifton/screens/main/home.dart';
+import 'package:lifton/screens/auth/start.dart';
 import 'package:lifton/screens/settings/setting_screen.dart';
 
 class Main extends StatefulWidget {

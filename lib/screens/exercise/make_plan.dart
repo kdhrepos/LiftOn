@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:lifton/global/state.dart';
 import 'package:lifton/global/util.dart';
-import 'package:lifton/screens/home/main.dart';
+import 'package:lifton/screens/main/main.dart';
 
 class MakePlan extends StatefulWidget {
-  const MakePlan({Key? key}) : super(key: key);
+  const MakePlan({
+    Key? key,
+    required this.selectedDay,
+  }) : super(key: key);
 
+  final DateTime selectedDay;
   @override
   _MakePlanState createState() => _MakePlanState();
 }
@@ -21,23 +25,30 @@ class _MakePlanState extends State<MakePlan> {
         setController.text.isEmpty ||
         weightController.text.isEmpty ||
         repsController.text.isEmpty) return;
-    await dio.post("$server/post-plan", data: {
-      "userId": currentUser.id,
-      'name': nameController.text,
-      'set': int.parse(setController.text),
-      'reps': int.parse(repsController.text),
-      'weight': double.parse(weightController.text),
-      'isConducted': false,
-    }).then((_) => {
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => Main(
-                selectedIdx: 1,
+
+    await dio
+        .post("$server/post-plan", data: {
+          "userId": currentUser.id,
+          'name': nameController.text,
+          'set': int.parse(setController.text),
+          'reps': int.parse(repsController.text),
+          'weight': double.parse(weightController.text),
+          'isConducted': false,
+          'date': widget.selectedDay.toString(),
+        })
+        .then((_) => {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Main(
+                    selectedIdx: 1,
+                  ),
+                ),
               ),
-            ),
-          ),
-        });
+            })
+        .catchError((err) => {
+              print(err),
+            });
   }
 
   @override

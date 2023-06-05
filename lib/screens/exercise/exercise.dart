@@ -1,7 +1,6 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:lifton/fetch/plan_fetch.dart';
+import 'package:lifton/global/fetch.dart';
 import 'package:lifton/global/util.dart';
 import 'package:lifton/models/plan.dart';
 import 'package:lifton/screens/exercise/goal.dart';
@@ -9,7 +8,7 @@ import 'package:lifton/screens/exercise/make_goal.dart';
 import 'package:lifton/screens/exercise/make_plan.dart';
 import 'package:lifton/screens/exercise/plan.dart';
 import 'package:lifton/screens/exercise/timer.dart';
-import 'package:lifton/screens/home/main.dart';
+import 'package:lifton/screens/main/main.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class Exercise extends StatefulWidget {
@@ -30,7 +29,7 @@ class _ExerciseState extends State<Exercise> {
   @override
   void initState() {
     super.initState();
-    planList = PlanFetch.getPlans(_selectedDay);
+    planList = Fetcher.getPlans(_selectedDay);
   }
 
   void postConductedState() async {
@@ -66,7 +65,7 @@ class _ExerciseState extends State<Exercise> {
                 },
                 onDaySelected: (selectedDay, focusedDay) {
                   setState(() {
-                    planList = PlanFetch.getPlans(selectedDay);
+                    planList = Fetcher.getPlans(selectedDay);
                     checkList.clear();
                   });
                   if (!isSameDay(_selectedDay, selectedDay)) {
@@ -170,11 +169,11 @@ class _ExerciseState extends State<Exercise> {
                 showDialog(
                   context: context,
                   builder: (BuildContext context) {
-                    return const Dialog(
+                    return Dialog(
                       child: SizedBox(
                         width: 500,
                         height: 300,
-                        child: MakePlan(),
+                        child: MakePlan(selectedDay: _selectedDay),
                       ),
                     );
                   },

@@ -4,10 +4,10 @@ import 'package:lifton/global/state.dart';
 import 'package:lifton/global/util.dart';
 import 'package:lifton/models/comment.dart';
 import 'package:lifton/models/post.dart';
-import 'package:lifton/fetch/comment_fetch.dart';
-import 'package:lifton/screens/home/login.dart';
+import 'package:lifton/global/fetch.dart';
+import 'package:lifton/screens/auth/start.dart';
 import 'package:lifton/screens/community/comment.dart';
-import 'package:lifton/screens/home/main.dart';
+import 'package:lifton/screens/main/main.dart';
 
 class Post extends StatefulWidget {
   final PostModel post;
@@ -29,7 +29,7 @@ class _PostState extends State<Post> {
   @override
   void initState() {
     super.initState();
-    commentList = CommentFetch.getAllComments(widget.post.id);
+    commentList = Fetcher.getAllComments(widget.post.id);
     print(widget.post.filePath);
   }
 
@@ -60,7 +60,7 @@ class _PostState extends State<Post> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => const Login(),
+          builder: (context) => const StartScreen(),
         ),
       );
     }

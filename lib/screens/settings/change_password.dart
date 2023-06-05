@@ -13,7 +13,6 @@ class ChangePassword extends StatefulWidget {
 
 class _ChangePasswordState extends State<ChangePassword> {
   bool isPasswordSame = true;
-  bool isSuccessful = true;
 
   final TextEditingController changePassword = TextEditingController();
   final TextEditingController changeConfirm = TextEditingController();

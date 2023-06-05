@@ -5,7 +5,7 @@ import 'package:lifton/global/state.dart';
 import 'package:lifton/global/util.dart';
 import 'dart:io';
 
-import 'package:lifton/screens/home/main.dart';
+import 'package:lifton/screens/main/main.dart';
 
 class MakePost extends StatefulWidget {
   const MakePost({super.key});

@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:lifton/fetch/plan_fetch.dart';
-import 'package:lifton/fetch/post_fetch.dart';
+import 'package:lifton/global/fetch.dart';
 import 'package:lifton/global/state.dart';
 import 'package:lifton/models/plan.dart';
 import 'package:lifton/models/post.dart';
 import 'package:lifton/screens/community/post_preview.dart';
 import 'package:lifton/screens/exercise/goal.dart';
 import 'package:lifton/screens/exercise/plan.dart';
-import 'package:lifton/screens/home/main.dart';
+import 'package:lifton/screens/main/main.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class Home extends StatefulWidget {
@@ -24,8 +23,8 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     super.initState();
-    postList = PostFetch.getAllPosts();
-    planList = PlanFetch.getPlans(DateTime.now());
+    postList = Fetcher.getAllPosts();
+    planList = Fetcher.getPlans(DateTime.now());
   }
 
   @override

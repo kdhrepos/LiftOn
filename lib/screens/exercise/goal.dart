@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lifton/fetch/goal_fetch.dart';
+import 'package:lifton/global/fetch.dart';
 import 'package:lifton/global/state.dart';
 import 'package:lifton/models/goal.dart';
 
@@ -21,7 +21,7 @@ class _GoalState extends State<Goal> {
 
   Future<void> fetchUserGoal() async {
     try {
-      final goal = await GoalFetch.getUserGoal(currentUser.id);
+      final goal = await Fetcher.getUserGoal(currentUser.id);
       setState(() {
         userGoal = goal;
       });

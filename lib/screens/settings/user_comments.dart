@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lifton/fetch/comment_fetch.dart';
+import 'package:lifton/global/fetch.dart';
 import 'package:lifton/global/state.dart';
 import 'package:lifton/models/comment.dart';
 import 'package:lifton/models/post.dart';
@@ -19,7 +19,7 @@ class _UserCommentsState extends State<UserComments> {
   @override
   void initState() {
     super.initState();
-    commentList = CommentFetch.getUserComments(
+    commentList = Fetcher.getUserComments(
       currentUser.id,
     );
   }

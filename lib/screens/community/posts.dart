@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:lifton/global/state.dart';
 import 'package:lifton/models/post.dart';
-import 'package:lifton/fetch/post_fetch.dart';
+import 'package:lifton/global/fetch.dart';
+
 import 'package:lifton/screens/community/make_post.dart';
-import 'package:lifton/screens/home/start.dart';
+import 'package:lifton/screens/auth/start.dart';
 import 'package:lifton/screens/community/post_preview.dart';
 
 class Posts extends StatefulWidget {
@@ -21,7 +22,7 @@ class _PostsState extends State<Posts> {
   @override
   void initState() {
     super.initState();
-    postList = PostFetch.getAllPosts();
+    postList = Fetcher.getAllPosts();
   }
 
   @override

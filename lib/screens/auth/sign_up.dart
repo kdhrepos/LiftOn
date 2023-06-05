@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lifton/models/user.dart';
 import 'package:lifton/global/state.dart';
 import 'package:lifton/global/util.dart';
-import 'package:lifton/screens/home/main.dart';
+import 'package:lifton/screens/main/main.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({

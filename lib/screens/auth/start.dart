@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lifton/screens/home/login.dart';
-import 'package:lifton/screens/home/sign_up.dart';
+import 'package:lifton/screens/auth/login.dart';
+import 'package:lifton/screens/auth/sign_up.dart';
 
 class StartScreen extends StatefulWidget {
   const StartScreen({super.key});
